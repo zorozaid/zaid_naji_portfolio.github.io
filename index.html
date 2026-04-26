@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAID NAJI | Portfolio Professionnel BUT2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    
+:root {
+    --bg-body: #f1f8e9;
+    --bg-card: #ffffff;
+    --text-main: #121212;
+    --text-muted: #444444;
+    --primary: #1b5e20;
+    --accent: #00c853;
+    --bg-alt-tag: #f0f0f0; /* Fond gris clair pour les tags */
+    --text-alt-tag: #444444; /* Texte foncé pour les tags */
+}
+
+[data-theme="dark"] {
+    --bg-body: #0a0a0a;
+    --bg-card: #1a1a1a;
+    --text-main: #ffffff;
+    --text-muted: #aaaaaa;
+    --primary: #81c784;
+    --accent: #69f0ae;
+    --bg-alt-tag: #333333; /* Fond sombre pour les tags */
+    --text-alt-tag: #ffffff; /* Texte blanc pour les tags */
+}
+
+/* --- LOGOS : On retire l'inversion qui casse les .jpg --- */
+.logo-bar {
+    background: white; /* On garde un fond blanc pour les logos institutionnels */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+[data-theme="dark"] .logo-inst {
+    filter: none !important; /* On ne touche pas aux couleurs des logos officiels */
+}
+/* Animation de flottaison pour l'image du CV */
+.cv-preview-small {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Effet d'apparition au défilement (Scroll Reveal) */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Effet de brillance sur les cartes au survol */
+.project-card::before, .alt-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.project-card:hover::before, .alt-card:hover::before {
+    left: 100%;
+}
+/* --- ÉTIQUETTES SGER (Chiffrage / Réseaux) --- */
+.alt-tag {
+    background-color: var(--bg-alt-tag) !important;
+    color: var(--text-alt-tag) !important;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+/* --- FORCE LA LISIBILITÉ GÉNÉRALE --- */
+body { background-color: var(--bg-body) !important; color: var(--text-main) !important; }
+.alt-card, .formation-card, .bilan-wrapper-white, .project-card {
+    background-color: var(--bg-card) !important;
+}
+
+/* On s'assure que les listes de missions SGER sont blanches en mode sombre */
+.task-list li { color: var(--text-main) !important; }
+.task-list li strong { color: var(--primary) !important; }
+
+/* Cible tous tes "rectangles" pour qu'ils basculent proprement */
+.formation-card, 
+.formation-intro-card, 
+.bilan-wrapper-white, 
+.projets-wrapper-white, /* <--- Ajoute ça ici */
+.alt-card, 
+.project-card, 
+.timeline-content, 
+.contact-card,
+.proof-card {
+    background-color: var(--bg-card) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+/* Correction des écritures illisibles */
+h1, h2, h3, h4, p, li, span, strong, .ue-tag {
+    color: var(--text-main) !important;
+}
+
+/* On garde les titres en vert pour le style */
+h2, .logo, .timeline-year {
+    color: var(--primary) !important;
+}
+
+/* --- STYLE DES BADGES PROJETS (Fix image_bf9bda.jpg) --- */
+.badge, .skill-badges span {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+/* Couleurs adaptées au mode sombre pour le contraste */
+[data-theme="dark"] .badge-hw { background: #3e2723 !important; color: #ffab91 !important; }
+[data-theme="dark"] .badge-sw { background: #1a237e !important; color: #9fa8da !important; }
+[data-theme="dark"] .badge-ana { background: #311b92 !important; color: #b39ddb !important; }
+
+/* Couleurs en mode clair */
+.badge-hw { background: #fff3e0; color: #e65100; }
+.badge-sw { background: #e3f2fd; color: #0d47a1; }
+.badge-ana { background: #f3e5f5; color: #4a148c; }
+/* Cible tous tes rectangles blancs pour qu'ils deviennent sombres */
+.formation-card, 
+.formation-intro-card, 
+.bilan-wrapper-white, 
+.alt-card, 
+.project-card, 
+.timeline-content, 
+.contact-card,
+.proof-card {
+    background-color: var(--bg-card) !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow) !important;
+}
+.alt-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border);
+}
+.alt-img:hover {
+    transform: scale(1.05);
+}
+
+/* Correction de la lisibilité des titres et textes */
+h1, h2, h3, h4, strong { color: var(--primary) !important; }
+p, li, span, .ue-tag { color: var(--text-main) !important; }
+.text-muted, .timeline-year { color: var(--text-muted) !important; }
+
+/* Inverser les logos si besoin (optionnel) */
+[data-theme="dark"] .logo-inst {
+    filter: brightness(0) invert(1); /* Rend les logos noirs en blanc */
+    opacity: 0.8;
+}
+
+/* --- APPLICATION DES VARIABLES --- */
+body { background-color: var(--bg-body); color: var(--text-main); transition: background 0.3s, color 0.3s; }
+.formation-card, .bilan-wrapper-white, .alt-card, .project-card, .timeline-content, .contact-card {
+    background-color: var(--bg-card) !important;
+    color: var(--text-main);
+    border-color: var(--border-color) !important;
+}
+h2, h3 { color: var(--primary); }
+p, .ue-tag { color: var(--text-muted); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; }
+
+/* --- NAVIGATION --- */
+nav {
+    position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border); z-index: 1000; padding: 1rem 10%;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.logo { font-weight: 800; color: var(--primary); text-decoration: none; font-size: 1.2rem; }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+.nav-links a:hover { color: var(--accent); }
+
+/* --- HERO SECTION --- */
+.hero { 
+    background: linear-gradient(135deg, #085126 0%, #1b5e20 100%); 
+    color: white; padding: 80px 10%; 
+    display: grid; grid-template-columns: 1fr 300px;
+    align-items: center; gap: 50px; min-height: 500px;
+}
+.hero-text h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; }
+.hero-text p { font-size: 1.3rem; opacity: 0.9; margin-bottom: 2rem; }
+.btn-hero {
+    background: white; color: var(--primary); padding: 12px 25px; 
+    border-radius: 8px; border: none; font-weight: 700; cursor: pointer;
+    transition: var(--transition); display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-hero:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+
+.cv-preview-small {
+    width: 280px; height: 380px; overflow: hidden; border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 4px solid white;
+    cursor: pointer; transition: var(--transition);
+}
+.cv-preview-small img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- SECTIONS --- */
+section { padding: 80px 10%; max-width: 1400px; margin: 0 auto; }
+h2 { font-size: 2rem; color: var(--primary); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 15px; }
+h2::after { content: ''; flex-grow: 1; height: 2px; background: var(--accent); }
+/* --- ANIMATION DU PARCOURS --- */
+.timeline-wrapper {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 31px;
+    top: 0;
+    width: 4px;
+    height: 0; /* Départ à 0 pour l'animation */
+    background: var(--primary);
+    transition: height 1.5s ease-in-out;
+}
+
+/* Quand on active l'animation */
+.timeline-wrapper.active .timeline-line {
+    height: 100%;
+}
+
+.timeline-card {
+    position: relative;
+    padding-left: 80px;
+    margin-bottom: 40px;
+    opacity: 0; /* Invisible au départ */
+    transform: translateX(-20px);
+    transition: all 0.6s ease-out;
+}
+
+.timeline-card.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 20px;
+    top: 25px;
+    width: 26px;
+    height: 26px;
+    background: white;
+    border: 5px solid var(--accent);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.timeline-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.timeline-year {
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 5px;
+}
+/* --- LAYOUT CARTE PRÉSENTATION FORMATION --- */
+.formation-intro-card {
+    background-color: var(--surface); /* Fond blanc propre pour la visibilité */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow); /* Ombre douce pour le relief */
+    border: 1px solid var(--border); /* Bordure légère assortie */
+    margin-bottom: 40px; /* Espace avant tes deux plaquettes d'images */
+}
+
+/* Ajustement mobile pour la carte */
+@media (max-width: 900px) {
+    .formation-intro-card {
+        padding: 20px;
+    }
+}
+/* --- SECTION FORMATION : RECTANGLE OFFICIEL --- */
+.formation-card {
+    background: var(--surface);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-bottom: 40px;
+}
+
+.logo-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo-inst {
+    height: 50px;
+    width: auto;
+    transition: var(--transition);
+}
+
+.formation-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.video-box {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: #000;
+    height: 280px;
+}
+
+@media (max-width: 900px) {
+    .formation-grid { grid-template-columns: 1fr; }
+    .logo-bar { flex-wrap: wrap; }
+}
+/* --- CONTENEUR BLANC POUR LE BILAN --- */
+.bilan-wrapper-white {
+    background-color: var(--surface); /* Blanc pur */
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-top: 60px;
+}
+
+/* On ajuste le dashboard pour qu'il n'ait pas d'ombre double */
+#bilan .skills-dashboard {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+/* --- DASHBOARD DES NIVEAUX DE COMPÉTENCES (Basé sur le S3) --- */
+.skills-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    background: var(--surface);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.skill-stat {
+    margin-bottom: 20px;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.progress-bar-bg {
+    background: #e8f5e9;
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+}
+
+.ue-tag {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+/* Animation de base pour les blocs */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* Classe qui sera ajoutée par le JavaScript */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Initialiser les barres à 0% avant l'animation */
+.progress-fill {
+    width: 0% !important; /* Force le départ à 0 */
+    transition: width 2s cubic-bezier(0.1, 0.5, 0.5, 1);
+}
+
+/* Effet de pulsation sur les badges du bulletin */
+.ue-tag {
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); color: var(--accent); }
+    100% { transform: scale(1); }
+}
+.proof-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.proof-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent);
+}
+
+.proof-card .cv-preview-small {
+    max-width: 100% !important; /* Pour s'adapter à la colonne */
+}
+/* --- GRILLE DES PROJETS SAÉ --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-img-box {
+    height: 220px;
+    overflow: hidden;
+    cursor: pointer;
+    border-bottom: 3px solid var(--accent);
+}
+
+.project-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.project-card:hover .project-img-box img {
+    transform: scale(1.08);
+}
+
+.project-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.project-content h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.skill-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-hw { background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; } /* Hardware */
+.badge-sw { background: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; } /* Software */
+.badge-ana { background: #f3e5f5; color: #4a148c; border: 1px solid #e1bee7; } /* Analyse */
+/* --- LIGHTBOX --- */
+#lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); display: none; justify-content: center; align-items: center; z-index: 2000; cursor: pointer; padding: 40px; }
+#lightbox img { max-width: 90%; max-height: 90%; border: 3px solid white; border-radius: 4px; }
+
+/* --- DASHBOARD ALTERNANCE SGER --- */
+.alternance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.alt-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.alt-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+
+.alt-header {
+    padding: 15px;
+    color: white;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-terrain { background: linear-gradient(135deg, #2e7d32, #1b5e20); } /* Vert Chantier */
+.header-be { background: linear-gradient(135deg, #1565c0, #0d47a1); }    /* Bleu Bureau */
+
+.alt-body { padding: 20px; flex-grow: 1; }
+
+.alt-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: #f0f0f0;
+    color: #444;
+}
+
+.task-list { list-style: none; padding: 0; }
+.task-list li {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.task-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+/* --- SECTION CONTACT & FOOTER --- */
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    background: #f1f8e9;
+}
+
+.contact-card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.contact-card span {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.contact-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+footer {
+    text-align: center;
+    padding: 50px 10% 20px;
+    margin-top: 80px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+/* --- VARIABLES MODE SOMBRE --- */
+[data-theme="dark"] {
+    --primary: #81c784; /* Vert plus doux pour le contraste */
+    --accent: #69f0ae;
+    --bg-light: #121212; /* Fond très sombre */
+    --surface: #1e1e1e; /* Cartes gris anthracite */
+    --text-main: #f5f5f5;
+    --text-muted: #b0b0b0;
+    --border: #333333;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Style du bouton toggle */
+.theme-switch {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.theme-switch:hover {
+    transform: rotate(20deg) scale(1.1);
+    background: var(--primary);
+    color: white;
+}
+/* --- ADAPTATION MOBILE (Responsive) --- */
+@media (max-width: 768px) {
+    /* 1. Réduction des espacements généraux */
+    section { padding: 40px 15px !important; }
+    
+    /* 2. Navigation : On permet aux liens de s'enrouler */
+    nav { 
+        flex-direction: column; 
+        gap: 15px; 
+        padding: 15px !important; 
+    }
+    .nav-links { 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 10px; 
+    }
+    .nav-links a { font-size: 0.8rem; }
+
+    /* 3. Hero Section : Image au-dessus ou en dessous du texte */
+    .hero { 
+        grid-template-columns: 1fr !important; 
+        text-align: center; 
+        padding: 40px 15px !important; 
+    }
+    .hero-text h1 { font-size: 2.2rem !important; }
+    .cv-preview-small { 
+        margin: 0 auto; 
+        width: 100%; 
+        max-width: 220px; 
+        height: 300px; 
+    }
+
+    /* 4. Grilles : On force tout en 1 seule colonne */
+    .formation-grid, 
+    .alternance-grid, 
+    .skills-dashboard, 
+    .projects-grid,
+    .contact-container,
+    .formation-header {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    /* 5. Ajustements spécifiques (Bilan et SAÉ) */
+    .bilan-wrapper-white { padding: 25px !important; }
+    .project-card { min-width: 100% !important; }
+    
+    /* 6. Timeline : On réduit le décalage à gauche */
+    .timeline-card { padding-left: 50px !important; }
+    .timeline-line { left: 16px !important; }
+    .timeline-dot { left: 5px !important; }
+
+    /* 7. Vidéo YouTube : On s'assure qu'elle ne dépasse pas */
+    .video-container iframe {
+        height: 200px !important;
+    }
+}
+</style>
+</head>
+
+<body>
+<script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    // Vérifie si l'utilisateur avait déjà choisi le mode sombre
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        htmlElement.setAttribute('data-theme', 'dark');
+        toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        const isDark = htmlElement.getAttribute('data-theme') === 'dark';
+        
+        if (isDark) {
+            htmlElement.removeAttribute('data-theme'); 
+            localStorage.setItem('theme', 'light');
+            toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+            htmlElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+    });
+</script>
+
+<nav>
+    <a href="#" class="logo">PORTFOLIO NAJI ZAID</a>
+    <div class="nav-links">
+        <a href="#ppp">Parcours</a>
+        <a href="#formation">Formation</a>
+        <a href="#bilan">Compétences</a>
+        <a href="#projets">SAÉ</a>
+        <a href="#alternance">Alternance SGER</a>
+        <a href="#contact">Contact</a>
+        <button id="theme-toggle" class="theme-switch" title="Changer de mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-text">
+        <span class="badge-hero">Promotion 2025 / 2026</span>
+        <h1>ZAID NAJI</h1>
+     <p>Étudiant en 2<sup>ème</sup> année de BUT GEII à l'IUT de Chartres. Parcours Électricité et Maîtrise de l'Énergie.</p>
+        <button class="btn-hero" onclick="openLightbox('images/CV.jpg')">
+            <i class="fas fa-search-plus"></i> Consulter mon CV (Zoom)
+        </button>
+    </div>
+    <div class="cv-preview-small" onclick="openLightbox('images/CV.jpg')">
+        <img src="images/CV.jpg" alt="Aperçu CV Zaid">
+    </div>
+</header>
+<section id="ppp">
+    <h2><i class="fas fa-history"></i> Présentation & Parcours</h2>
+    
+    <div class="timeline-wrapper" id="timeline-trigger">
+        <div class="timeline-line"></div> <div class="timeline-card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="timeline-year">2023 - 2024</span>
+                <h3>Bac STI2D ITEC (Mention Assez Bien)</h3>
+                <p>Lycée Jehan de Beauce, Chartres. Découverte de la conception technique et du prototypage.</p>
+            </div>
+        </div>
+
+        <div class="timeline-card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="timeline-year">2024 - 2025</span>
+                <h3>BUT1 GEII - IUT de Chartres</h3>
+                <p>Validation des compétences fondamentales en électricité et électronique.</p>
+            </div>
+        </div>
+
+        <div class="timeline-card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="timeline-year">2025 - 2027</span>
+                <h3>BUT2 & Apprenti chez SGER</h3>
+                <p>Missions en Bureau d'études (AutoCAD) et raccordements TGBT sur chantier.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="formation">
+    <h2><i class="fas fa-graduation-cap"></i> Formation & Expertise</h2>
+    <div class="formation-card">
+        <div class="logo-bar">
+            <img src="images/logo_univ.jpg" alt="Université Orléans" class="logo-inst">
+            <img src="images/logo_iut.jpg" alt="IUT Chartres" class="logo-inst">
+            <img src="images/logo_geii.jpg" alt="GEII" class="logo-inst">
+            <img src="images/logo_cfa.jpg" alt="CFA" class="logo-inst">
+        </div>
+    <div class="formation-intro-card">
+        <div class="formation-header" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+            <div class="formation-text">
+                <h3 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-university"></i> Le BUT GEII à Chartres</h3>
+                <p>Le BUT GEII forme des cadres intermédiaires aux compétences tournées vers les nouvelles technologies. Mon parcours <strong>EME</strong> me permet de me spécialiser en électronique de puissance et maîtrise de l'énergie.</p>
+                <br>
+                <p>Cette formation me prépare à une insertion professionnelle directe ou à une poursuite d'études en <strong>écoles d'ingénieurs</strong>.</p>
+            <br>
+                <p>
+                    <i class="fas fa-lightbulb" style="color: var(--accent);"></i> 
+                    <strong>Pourquoi j'ai choisi ce parcours ?</strong><br>
+                    Passionné par l'innovation, j'ai choisi le GEII pour sa polyvalence. C'est la formation idéale pour maîtriser à la fois l'automatisme et l'énergie, tout en répondant aux défis technologiques de demain.
+                </p>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">
+                    <i class="fas fa-info-circle"></i> 
+                    <em>Note : Mon cursus intègre les deux nouvelles compétences du programme national 2022 pour le parcours EME : <strong>Installer</strong> et <strong>Piloter</strong>.</em>
+                </p>
+                <div style="margin-top: 25px;">
+                <a href="images/plaquette_geii.pdf" download="Plaquette_BUT_GEII_Naji_Zaid" class="btn-hero" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px; background-color: var(--primary); color: white; padding: 12px 20px; border-radius: 8px;">
+                    <i class="fas fa-file-pdf"></i> Télécharger la plaquette (PDF)
+                </a>
+            </div>
+        </div>
+        
+        <div class="video-container" style="border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); background: #000;">
+<iframe 
+    width="100%" 
+    height="315" 
+    src="https://www.youtube.com/embed/fMNFGw5IAIc" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>        
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 50px;">
+        <div class="proof-card" onclick="openLightbox('images/plaquette_geii1.jpg')">
+             <p style="font-weight: 700; margin-bottom: 10px; color: var(--primary);"><i class="fas fa-file-image"></i> Programme BUT GEII (P1)</p>
+             <div class="cv-preview-small" style="width: 100%; height: 350px; border: 2px solid var(--border);">
+                 <img src="images/plaquette_geii1.jpg" alt="Plaquette Page 1">
+             </div>
+        </div>
+        <div class="proof-card" onclick="openLightbox('images/plaquette_geii2.jpg')">
+             <p style="font-weight: 700; margin-bottom: 10px; color: var(--primary);"><i class="fas fa-file-image"></i> Débouchés & Études (P2)</p>
+             <div class="cv-preview-small" style="width: 100%; height: 350px; border: 2px solid var(--border);">
+                 <img src="images/plaquette_geii2.jpg" alt="Plaquette Page 2">
+             </div>
+        </div>
+    </div>
+</section>
+
+<section id="bilan">
+    <h2><i class="fas fa-chart-line" style="color: var(--accent);"></i> Bilan de Compétences (Niveaux S3)</h2>
+    <div class="bilan-wrapper-white">
+        <p style="margin-bottom: 30px; font-weight: 500;">Synthèse de mes résultats académiques et de mes missions chez SGER.</p>
+
+        <div class="skills-dashboard" id="skills-trigger">
+            <div class="skill-stat">
+                <div class="skill-info"><span>CONCEVOIR <span class="ue-tag">(UE 3.1)</span></span><span><span class="percent-value" data-target="53">0</span>%</span></div>
+                <div class="progress-bar-bg"><div class="progress-fill" data-width="53%"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 5px; color: var(--text-muted);">Moyenne : 10.65.</p>
+            </div>
+            <div class="skill-stat">
+                <div class="skill-info"><span>VÉRIFIER <span class="ue-tag">(UE 3.2)</span></span><span><span class="percent-value" data-target="58">0</span>%</span></div>
+                <div class="progress-bar-bg"><div class="progress-fill" data-width="58%"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 5px; color: var(--text-muted);">Moyenne : 11.56.</p>
+            </div>
+            <div class="skill-stat">
+                <div class="skill-info"><span>MAINTENIR <span class="ue-tag">(UE 3.3)</span></span><span><span class="percent-value" data-target="58">0</span>%</span></div>
+                <div class="progress-bar-bg"><div class="progress-fill" data-width="58%"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 5px; color: var(--text-muted);">Moyenne : 11.60.</p>
+            </div>
+            <div class="skill-stat">
+                <div class="skill-info"><span>INSTALLER <span class="ue-tag">(UE 3.4 EME)</span></span><span><span class="percent-value" data-target="55">0</span>%</span></div>
+                <div class="progress-bar-bg"><div class="progress-fill" data-width="55%"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 5px; color: var(--text-muted);">Moyenne : 11.00.</p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid var(--border); padding-top: 30px;">
+            <div class="proof-card" onclick="openLightbox('images/bulletin.jpg')">
+                <p style="font-weight: 700; margin-bottom: 10px; color: var(--primary);"><i class="fas fa-file-invoice"></i> Relevé de Notes S3</p>
+                <div class="cv-preview-small" style="width: 100%; height: 250px;"><img src="images/bulletin.jpg"></div>
+            </div>
+            <div class="proof-card" onclick="openLightbox('images/fiche.jpg')">
+                <p style="font-weight: 700; margin-bottom: 10px; color: var(--primary);"><i class="fas fa-tasks"></i> Fiche Missions SGER</p>
+                <div class="cv-preview-small" style="width: 100%; height: 250px;"><img src="images/fiche.jpg"></div>
+            </div>
+        </div>
+        <div style="margin-bottom: 25px; padding: 20px; border-left: 4px solid var(--accent); background: rgba(0,200,83,0.05);">
+    <p><strong><i class="fas fa-user-check"></i> Mes Soft Skills :</strong> Autonomie, Rigueur technique, Travail en équipe.</p>
+    <p style="margin-top: 10px; font-style: italic; font-size: 0.9rem;">
+        "Au-delà des notes, cette année de BUT2 a marqué une transition vers une posture plus professionnelle. Mon immersion chez SGER m'a permis de comprendre l'importance de la rigueur et de l'anticipation sur les chantiers complexes."
+    </p>
+</div>
+    </div>
+    
+    </section>
+<section id="projets">
+    <h2><i class="fas fa-tools"></i> SAÉ & Réalisations Techniques</h2>
+    
+    <div class="projets-wrapper-white" style="background-color: var(--bg-card); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border);">
+        
+        <p style="text-align: center; margin-bottom: 30px; color: var(--text-muted); font-weight: 500;">
+            Synthèse de mes réalisations techniques et de mes travaux pratiques en BUT GEII.
+        </p>
+
+        <div class="projects-grid">
+        
+
+        <div class="project-card">
+            <div class="project-img-box" onclick="openLightbox('images/alim.jpg')">
+                <img src="images/alim.jpg" alt="Alim Stabilisée">
+            </div>
+            <div class="project-content">
+                <h3>Alimentation Stabilisée Réglable</h3>
+                <p>Analyse fonctionnelle et réalisation d'une alimentation 12V-15V. Étude de la chaîne de conversion : transformateur, redressement, filtrage et régulation.</p>
+                <div class="skill-badges">
+                    <span class="badge badge-ana">Analyse</span>
+                    <span class="badge badge-hw">LM317 / 7805</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-img-box" onclick="openLightbox('images/mesure.jpg')">
+                <img src="images/mesure.jpg" alt="Mesure Énergie">
+            </div>
+            <div class="project-content">
+                <h3>Mesure d'Énergie (SAÉ 2.02)</h3>
+                <p>Conception d'un dispositif Arduino pour mesurer et traiter les grandeurs électriques (S, P, Q, kP). Gestion des interruptions et affichage LCD.</p>
+                <div class="skill-badges">
+                    <span class="badge badge-sw">C++ Arduino</span>
+                    <span class="badge badge-ana">Calculs RMS</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-img-box" onclick="openLightbox('images/hacheur.jpg')">
+                <img src="images/hacheur.jpg" alt="Hacheur">
+            </div>
+            <div class="project-content">
+                <h3>Alimentation à Découpage (Hacheur)</h3>
+                <p>Réalisation d'un hacheur série pour piloter une machine à courant continu. Utilisation de KiCad pour le PCB et gestion du contrôleur PWM SG3525.</p>
+                <div class="skill-badges">
+                    <span class="badge badge-hw">KiCad</span>
+                    <span class="badge badge-hw">Puissance</span>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-img-box" onclick="openLightbox('images/variateur.jpg')">
+                <img src="images/variateur.jpg" alt="Variateur">
+            </div>
+            <div class="project-content">
+                <h3>Variateur pour Épandeur Agricole</h3>
+                <p>Conception d'un variateur 12V robuste pour quad. Commande MLI avec isolation optique par 4N25 pour protéger la partie commande.</p>
+                <div class="skill-badges">
+                    <span class="badge badge-hw">MLI</span>
+                    <span class="badge badge-ana">Optocoupleur</span>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-img-box" onclick="openLightbox('images/AMP et filtres actif.jpg')">
+                <img src="images/AMP et filtres actif.jpg" alt="Filtres Audio">
+            </div>
+            <div class="project-content">
+                <h3>Filtres Actifs & Amplificateurs</h3>
+                <p>Étude et réalisation d'un système audio 3 voies. Utilisation de structures Sallen & Key et Rauch pour le filtrage actif grave/médium/aigu.</p>
+                <div class="skill-badges">
+                    <span class="badge badge-ana">LTSpice</span>
+                    <span class="badge badge-hw">Audio</span>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-img-box" onclick="openLightbox('images/radar.jpg')">
+                <img src="images/radar.jpg" alt="Radar">
+            </div>
+            <div class="project-content">
+                <h3>Radar de Recul Ultrasons</h3>
+                <p>Chaîne d'acquisition analogique complète (AOP). Travail sur le diagnostic de pannes (diode Zener) et la validation de signaux complexes.</p>
+                <div class="skill-badges">
+                    <span class="badge badge-ana">Diagnostic</span>
+                    <span class="badge badge-hw">Analogique</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<style>
+    /* --- STYLE SPÉCIFIQUE DES FICHES ALTERNANCE --- */
+    .alt-project-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .alt-fiche {
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: var(--shadow);
+    }
+
+    .alt-fiche:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .alt-fiche-header {
+        padding: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .header-blue { background: linear-gradient(135deg, #1565c0, #0d47a1); }
+    .header-green { background: linear-gradient(135deg, #2e7d32, #1b5e20); }
+    .header-orange { background: linear-gradient(135deg, #e65100, #bf360c); }
+
+    .alt-fiche-body { padding: 25px; flex-grow: 1; }
+    
+    .alt-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 5px; }
+    .alt-date { font-size: 0.85rem; opacity: 0.9; font-weight: 600; }
+
+    .alt-section-title {
+        color: var(--primary);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        font-weight: 800;
+        margin: 15px 0 10px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .alt-text { font-size: 0.9rem; color: var(--text-main); margin-bottom: 10px; }
+    
+    .alt-list { list-style: none; padding: 0; margin-bottom: 15px; }
+    .alt-list li {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+        padding-left: 18px;
+        position: relative;
+    }
+    .alt-list li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-weight: bold;
+    }
+
+    .alt-skills-box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .skill-tag {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+        background: var(--bg-alt-tag);
+        color: var(--text-alt-tag);
+        border-radius: 4px;
+        font-weight: 700;
+    }
+
+    .photo-placeholder-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .photo-zone {
+        aspect-ratio: 16/9;
+        background: #f8f9fa;
+        border: 2px dashed #ddd;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        color: #888;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .photo-zone i { font-size: 1.2rem; margin-bottom: 5px; }
+</style>
+
+<section id="alternance">
+    <h2><i class="fas fa-briefcase"></i> Alternance – SGER 2025/2026</h2>
+    <p style="text-align: center; margin-bottom: 20px;">
+        Immersion professionnelle au sein de l'entreprise <strong>SGER</strong> (Société Générale Eléctricité et Réseaux). 
+        Transformation progressive d'une posture d'apprenant vers celle d'un technicien expert.
+    </p>
+
+    <div class="alt-project-container">
+
+        <article class="alt-fiche">
+            <div class="alt-fiche-header header-green">
+                <div>
+                    <div class="alt-title">Installation Tertiaire - Bureaux</div>
+                    <div class="alt-date">22 Sept. → 03 Oct.</div>
+                </div>
+                <i class="fas fa-building fa-2x"></i>
+            </div>
+            <div class="alt-fiche-body">
+                <div class="alt-section-title"><i class="fas fa-info-circle"></i> Contexte</div>
+                <p class="alt-text">Aménagement complet d'un bâtiment administratif incluant bureaux, réfectoire et salles d'archives.</p>
+                
+                <div class="alt-section-title"><i class="fas fa-tasks"></i> Missions</div>
+                <ul class="alt-list">
+                    <li>Lecture de plans d'implantation (RDC et Étage 1).</li>
+                    <li>Maîtrise des sections de câbles (3G2.5, 5G1.5, CAT6).</li>
+                    <li>Implantation stratégique du TGBT.</li>
+                    <li>Tirage de câbles courants forts et courants faibles.</li>
+                    <li>Installation de l'appareillage (PC, RJ45).</li>
+                    <li>Organisation et repérage des circuits en TGBT.</li>
+                </ul>
+
+                <div class="alt-section-title"><i class="fas fa-brain"></i> Compétences</div>
+                <div class="alt-skills-box">
+                    <span class="skill-tag">Électricité Tertiaire</span>
+                    <span class="skill-tag">Lecture de Plans</span>
+                    <span class="skill-tag">Organisation</span>
+                </div>
+
+                <div class="alt-section-title"><i class="fas fa-image"></i> Photos à intégrer</div>
+                <div class="photo-placeholder-grid">
+    <img src="images/pose_appareillage.jpg" alt="Pose Appareillage" onclick="openLightbox(this.src)" class="alt-img">
+    <img src="images/tgbt_peigne.jpg" alt="TGBT Peigné" onclick="openLightbox(this.src)" class="alt-img">
+</div>
+            </div>
+        </article>
+
+        <article class="alt-fiche">
+            <div class="alt-fiche-header header-blue">
+                <div>
+                    <div class="alt-title">Ingénierie & Chiffrage BE</div>
+                    <div class="alt-date">27 Oct. → 14 Nov.</div>
+                </div>
+                <i class="fas fa-desktop fa-2x"></i>
+            </div>
+            <div class="alt-fiche-body">
+                <div class="alt-section-title"><i class="fas fa-info-circle"></i> Contexte</div>
+                <p class="alt-text">Appui technique au Bureau d'Études pour la réponse aux appels d'offres publics et privés.</p>
+                
+                <div class="alt-section-title"><i class="fas fa-tasks"></i> Missions</div>
+                <ul class="alt-list">
+                    <li>Analyse de Dossiers de Consultation (DCE).</li>
+                    <li>Réalisation de métrés précis sur AutoCAD.</li>
+                    <li>Établissement de DPGF sur Excel.</li>
+                    <li>Analyse de CCTP pour projets (ex: Aldi).</li>
+                    <li>Veille sur le décret ERP (Câbles S2/D2).</li>
+                    <li>Rédaction de mémoires techniques (SOPAQ / SOGED).</li>
+                </ul>
+
+                <div class="alt-section-title"><i class="fas fa-brain"></i> Compétences</div>
+                <div class="alt-skills-box">
+                    <span class="skill-tag">AutoCAD</span>
+                    <span class="skill-tag">Excel Avancé</span>
+                    <span class="skill-tag">Réglementation</span>
+                </div>
+
+                <div class="alt-section-title"><i class="fas fa-image"></i> Photos à intégrer</div>
+                <div class="photo-placeholder-grid">
+    <img src="images/plan_autocad.jpg" alt="Plan AutoCAD" onclick="openLightbox(this.src)" class="alt-img">
+    <img src="images/tableau_dpgf.jpg" alt="Tableau DPGF" onclick="openLightbox(this.src)" class="alt-img">
+</div>
+            </div>
+        </article>
+
+        <article class="alt-fiche">
+            <div class="alt-fiche-header header-orange">
+                <div>
+                    <div class="alt-title">Maintenance & Réseaux VDI</div>
+                    <div class="alt-date">26 Janv. → 30 Janv.</div>
+                </div>
+                <i class="fas fa-tools fa-2x"></i>
+            </div>
+            <div class="alt-fiche-body">
+                <div class="alt-section-title"><i class="fas fa-info-circle"></i> Contexte</div>
+                <p class="alt-text">Intervention de haute technicité sur infrastructures réseau et dépannage industriel.</p>
+                
+                <div class="alt-section-title"><i class="fas fa-tasks"></i> Missions</div>
+                <ul class="alt-list">
+                    <li>Sertissage de 48 connecteurs RJ45.</li>
+                    <li>Brassage structuré en baie informatique.</li>
+                    <li>Dépannage de vannes motorisées AUMA.</li>
+                    <li>Diagnostic de défaut de relais et oxydation.</li>
+                    <li>Pose de boîtiers de dérivation IP68.</li>
+                    <li>Repérage terminal de raccordement TGBT.</li>
+                </ul>
+
+                <div class="alt-section-title"><i class="fas fa-brain"></i> Compétences</div>
+                <div class="alt-skills-box">
+                    <span class="skill-tag">VDI / Réseaux</span>
+                    <span class="skill-tag">Maintenance</span>
+                    <span class="skill-tag">Diagnostic</span>
+                </div>
+
+                <div class="alt-section-title"><i class="fas fa-image"></i> Photos à intégrer</div>
+                <div class="photo-placeholder-grid">
+    <img src="images/baie_informatique.jpg" alt="Baie Informatique" onclick="openLightbox(this.src)" class="alt-img">
+    <img src="images/actionneur_auma.jpg" alt="Actionneur AUMA" onclick="openLightbox(this.src)" class="alt-img">
+</div>
+            </div>
+        </article>
+
+        <article class="alt-fiche">
+            <div class="alt-fiche-header header-green">
+                <div>
+                    <div class="alt-title">Vidéosurveillance & Sécurité</div>
+                    <div class="alt-date">02 Fév. → 06 Fév.</div>
+                </div>
+                <i class="fas fa-video fa-2x"></i>
+            </div>
+            <div class="alt-fiche-body">
+                <div class="alt-section-title"><i class="fas fa-info-circle"></i> Contexte</div>
+                <p class="alt-text">Déploiement de solutions de sécurité électronique et finitions tertiaires.</p>
+                
+                <div class="alt-section-title"><i class="fas fa-tasks"></i> Missions</div>
+                <ul class="alt-list">
+                    <li>Installation de caméras de surveillance IP.</li>
+                    <li>Câblage de coffrets de sécurité dédiés.</li>
+                    <li>Installation d'appareillage Legrand.</li>
+                    <li>Paramétrage des angles de vue.</li>
+                    <li>Tests de continuité et mise en service.</li>
+                    <li>Finition des chemins de câbles VDI.</li>
+                </ul>
+
+                <div class="alt-section-title"><i class="fas fa-brain"></i> Compétences</div>
+                <div class="alt-skills-box">
+                    <span class="skill-tag">Vidéosurveillance</span>
+                    <span class="skill-tag">Courant Faible</span>
+                    <span class="skill-tag">Finition</span>
+                </div>
+
+                <div class="alt-section-title"><i class="fas fa-image"></i> Photos à intégrer</div>
+                <div class="photo-placeholder-grid">
+    <img src="images/camera_posee.jpg" alt="Caméra Posée" onclick="openLightbox(this.src)" class="alt-img">
+    <img src="images/coffret_securite.jpg" alt="Coffret Sécurité" onclick="openLightbox(this.src)" class="alt-img">
+</div>
+            </div>
+        </article>
+
+        <article class="alt-fiche">
+            <div class="alt-fiche-header header-orange">
+                <div>
+                    <div class="alt-title">Distribution & Réseaux Enedis</div>
+                    <div class="alt-date">16 Fév. → 06 Mars</div>
+                </div>
+                <i class="fas fa-bolt fa-2x"></i>
+            </div>
+            <div class="alt-fiche-body">
+                <div class="alt-section-title"><i class="fas fa-info-circle"></i> Contexte</div>
+                <p class="alt-text">Enfouissement de réseaux à Saint-Léger pour le passage de l'aérien au souterrain.</p>
+                
+                <div class="alt-section-title"><i class="fas fa-tasks"></i> Missions</div>
+                <ul class="alt-list">
+                    <li>Tirage de câbles fortes sections (240mm² Alu).</li>
+                    <li>Réalisation de jonctions J1/J2.</li>
+                    <li>Identification et tictage complet des REMBT.</li>
+                    <li>Protection thermo-rétractable des conducteurs.</li>
+                    <li>Rédaction de la PMEO finale pour Enedis.</li>
+                    <li>Coordination terrain des branchements (35/95 mm²).</li>
+                </ul>
+
+                <div class="alt-section-title"><i class="fas fa-brain"></i> Compétences</div>
+                <div class="alt-skills-box">
+                    <span class="skill-tag">Normes Enedis</span>
+                    <span class="skill-tag">Fortes Sections</span>
+                    <span class="skill-tag">Réseaux Ext.</span>
+                </div>
+
+                <div class="alt-section-title"><i class="fas fa-image"></i> Photos à intégrer</div>
+                <div class="photo-placeholder-grid">
+    <img src="images/jonction_240.jpg" alt="Jonction 240mm²" onclick="openLightbox(this.src)" class="alt-img">
+    <img src="images/coffret_rembt.jpg" alt="Coffret REMBT" onclick="openLightbox(this.src)" class="alt-img">
+</div>
+            </div>
+        </article>
+
+        <article class="alt-fiche">
+            <div class="alt-fiche-header header-blue">
+                <div>
+                    <div class="alt-title">Conduite de Travaux & Projets</div>
+                    <div class="alt-date">09 Mars → 24 Avril</div>
+                </div>
+                <i class="fas fa-project-diagram fa-2x"></i>
+            </div>
+            <div class="alt-fiche-body">
+                <div class="alt-section-title"><i class="fas fa-info-circle"></i> Contexte</div>
+                <p class="alt-text">Pilotage de dossiers complexes (ALDI) et gestion opérationnelle de la logistique.</p>
+                
+                <div class="alt-section-title"><i class="fas fa-tasks"></i> Missions</div>
+                <ul class="alt-list">
+                    <li>Traitement de dossiers BE (projets Aldi).</li>
+                    <li>Logistique urgente et approvisionnements.</li>
+                    <li>Visite chantier et tictage final REMBT.</li>
+                    <li>Vérification de conformité avant raccordements.</li>
+                    <li>Finalisation des dossiers de récolement.</li>
+                    <li>Reporting direct à la direction technique.</li>
+                </ul>
+
+                <div class="alt-section-title"><i class="fas fa-brain"></i> Compétences</div>
+                <div class="alt-skills-box">
+                    <span class="skill-tag">Logistique</span>
+                    <span class="skill-tag">Conduite Travaux</span>
+                    <span class="skill-tag">Qualité</span>
+                </div>
+
+                <div class="alt-section-title"><i class="fas fa-image"></i> Photos à intégrer</div>
+                <div class="photo-placeholder-grid">
+    <img src="images/reunion_chantier.jpg" alt="Réunion Chantier" onclick="openLightbox(this.src)" class="alt-img">
+    <img src="images/plan_annote.jpg" alt="Plan Annoté" onclick="openLightbox(this.src)" class="alt-img">
+</div>
+            </div>
+        </article>
+
+    </div>
+</section>
+<section id="contact">
+    <h2><i class="fas fa-envelope"></i> Me Contacter</h2>
+    <p style="text-align: center; margin-bottom: 40px;">Étudiant en BUT2 GEII et apprenti chez SGER, je suis à votre disposition pour toute information complémentaire.</p>
+
+    <div class="contact-container">
+        <a href="https://www.linkedin.com/in/zaid-naji-b39184334/" target="_blank" class="contact-card">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+            <p>Mon profil professionnel et mon réseau</p>
+        </a>
+
+        <a href="mailto:zaidnaji86@gmail.com" class="contact-card">
+            <i class="fas fa-paper-plane"></i>
+            <span>Email</span>
+            <p>Pour m'envoyer un message direct</p>
+        </a>
+
+        <a href="tel:+33 7 52 31 34 82" class="contact-card">
+            <i class="fas fa-phone-alt"></i>
+            <span>Téléphone</span>
+            <p>Me joindre directement</p>
+        </a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 - Zaid NAJI - Portfolio BUT2 GEII IUT de Chartres.</p>
+</footer>
+
+<div id="lightbox" onclick="this.style.display='none'"><img id="lb-img" src=""></div>
+
+<script>
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 1. On fait grandir la ligne
+                entry.target.classList.add('active');
+                
+                // 2. On fait apparaître les cartes une par une
+                const cards = entry.target.querySelectorAll('.timeline-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('show');
+                    }, 400 * (index + 1)); // Délai de 400ms entre chaque carte
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const trigger = document.getElementById('timeline-trigger');
+    if(trigger) timelineObserver.observe(trigger);
+    // Configuration de l'observateur pour lancer l'animation au scroll
+    const skillsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 1. Déclenche l'animation des barres
+                const bars = entry.target.querySelectorAll('.progress-fill');
+                bars.forEach(bar => {
+                    const level = bar.getAttribute('data-width');
+                    bar.style.setProperty('width', level, 'important');
+                });
+
+                // 2. Déclenche le compteur de chiffres
+                const counters = entry.target.querySelectorAll('.percent-value');
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000; // 2 secondes
+                    const step = target / (duration / 30);
+                    
+                    let current = 0;
+                    const updateCounter = () => {
+                        current += step;
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current);
+                            setTimeout(updateCounter, 30);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCounter();
+                });
+                
+                // On arrête d'observer une fois l'animation lancée
+                skillsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    // On cible le dashboard pour l'observation
+    const target = document.getElementById('skills-trigger');
+    if(target) skillsObserver.observe(target);
+
+    // Fonction pour la Lightbox (zoom images)
+    function openLightbox(src) {
+        document.getElementById('lb-img').src = src;
+        document.getElementById('lightbox').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function() {
+        this.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+</script>
+<script>
+    const themeBtn = document.getElementById('theme-toggle');
+    
+    // Fonction pour changer l'icône et le thème
+    const toggleTheme = () => {
+        const isDark = document.documentElement.hasAttribute('data-theme');
+        if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+            themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+    };
+    themeBtn.addEventListener('click', toggleTheme);
+
+    // Appliquer le thème sauvegardé au démarrage
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+</script>
+</body>
+</html>
